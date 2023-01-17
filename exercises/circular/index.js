@@ -12,6 +12,21 @@
 //   c.next = b;
 //   circular(l) // true
 
-function circular(list) {}
+// set slow/fast to be head, then move fast by 2, slow by 1. Iterate until list reaches end, or slow and fast meet at same node
+
+function circular(list) {
+    let slow = list.head
+    let fast = list.head
+
+    while(fast.next && fast.next.next) {
+        slow = slow.next
+        fast = fast.next.next
+        if (slow === fast) {
+            return true
+        }
+    }
+
+    return false
+}
 
 module.exports = circular;

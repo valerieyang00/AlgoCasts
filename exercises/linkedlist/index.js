@@ -144,9 +144,6 @@ class LinkedList {
     }
 
     forEach(fn) {
-        if (!this.head) {
-            return
-        }
         let node = this.head
         let index = 0
         while(node) {
@@ -154,6 +151,16 @@ class LinkedList {
             node = node.next
             index++
         }
+    }
+
+    //generator function to allow for...of loop to be used on linked list
+    *[Symbol.iterator]() {
+        let node = this.head
+        while(node) {
+            yield node;
+            node = node.next
+        }
+
     }
 }
 
